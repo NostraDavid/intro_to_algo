@@ -2,7 +2,7 @@
 /*
 
 # Allow specific files and directories
-!/.gitignore
-!/meson.build
-!/src/
-
+!.gitignore
+!meson.build
+!src/
+!README.md
