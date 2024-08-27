@@ -1,0 +1,8 @@
+# Ignore everything at the root level
+/*
+
+# Allow specific files and directories
+!/.gitignore
+!/meson.build
+!/src/
+
