@@ -1,8 +1,12 @@
 # Ignore everything at the root level
 /*
 
-# Allow specific files and directories
+# Allow files
 !.gitignore
 !meson.build
-!src/
 !README.md
+
+# Allow directories
+!src/
+!cmd/
+

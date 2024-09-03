@@ -1,5 +1,12 @@
-project('intro_to_algo', 'c',
-  version : '0.1',
-  default_options : ['warning_level=3'])
+project('algorithms', 'c')
 
-subdir('src')
+# Define the list of executable names (without extension)
+executables = [
+  'insertion_sort',
+]
+
+# Create an executable for each .c file
+foreach executable : executables
+    src_file = 'src/' + executable + '.c'  # Construct the source file path
+    executable(executable, src_file)
+endforeach
