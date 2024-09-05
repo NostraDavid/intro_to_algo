@@ -1,22 +1,24 @@
 use clap::Parser;
+use intro_to_algo::algorithms;
 
-/// Simple program to greet a person
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 struct Args {
-    /// Name of the person to greet
+    /// Algorithm to run
     #[arg(short, long)]
-    name: String,
-
-    /// Number of times to greet
-    #[arg(short, long, default_value_t = 1)]
-    count: u8,
+    algorithm: String,
 }
 
+/// Run the specified algorithm
+///
+/// Run like `cargo run -- --algorithm insertion_sort` if you don't feel like
+/// figuring out what the executable is called.
 fn main() {
     let args = Args::parse();
 
-    for _ in 0..args.count {
-        println!("Hello {}!", args.name);
+    // Call the specified algorithm
+    match args.algorithm.as_str() {
+        "insertion_sort" => algorithms::insertion_sort::run(),
+        _ => println!("Unknown algorithm"),
     }
 }

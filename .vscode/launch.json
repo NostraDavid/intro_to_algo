@@ -6,8 +6,8 @@
     "configurations": [
         {
             "args": [
-                "--name",
-                "hank"
+                "--algorithm",
+                "insertion_sort",
             ],
             "cwd": "${workspaceFolder}",
             "name": "Debug",

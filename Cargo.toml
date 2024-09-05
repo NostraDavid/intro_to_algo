@@ -13,11 +13,15 @@ authors = ["NostraDavid <<55331731+NostraDavid@users.noreply.github.com>>"]
 
 [dependencies]
 rand = "^0.8" # For random number generation, if needed for algorithmic examples
-clap = { version = "^4.5", features = ["derive"] }  # For creating a CLI (if needed)
+clap = { version = "^4.5", features = ["derive"] }  # CLI library
 
 [dev-dependencies]
 criterion = "^0.5" # For benchmarking algorithms
 proptest = "^1.5"  # For testing algorithms
+
+[lib]
+name = "intro_to_algo"
+path = "src/lib.rs"
 
 [features]
 default = [] # Define optional features here
