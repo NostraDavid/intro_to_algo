@@ -1,0 +1,27 @@
+[package]
+name = "intro_to_algo"
+version = "0.0.0"
+edition = "2021"
+rust-version = "1.81"
+description = "Introduction to algorithms, Fourth Edition"
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/NostraDavid/intro_to_algo"
+keywords = ["algorithms", "learning", "data structures", "rust", "computer science"]
+categories = ["algorithms", "education"]
+authors = ["NostraDavid <<55331731+NostraDavid@users.noreply.github.com>>"]
+
+[dependencies]
+rand = "^0.8" # For random number generation, if needed for algorithmic examples
+clap = { version = "^4.5", features = ["derive"] }  # For creating a CLI (if needed)
+
+[dev-dependencies]
+criterion = "^0.5" # For benchmarking algorithms
+proptest = "^1.5"  # For testing algorithms
+
+[features]
+default = [] # Define optional features here
+
+[profile.release]
+opt-level = 3 # Ensure maximum optimization for release builds
+lto = true    # Enable link-time optimizations

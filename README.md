@@ -3,12 +3,26 @@
 ## Prerequisites
 
 ```bash
-sudo apt install --no-install-recommends \
-  build-essentials \
-  meson \
-  ninja
+# WSL; install Rust + Cargo
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-## Build commands
+## Cargo commands
 
-`meson build`; otherwise, ask ChatGPT, lol.
+### Build debug
+
+`cargo build`
+
+### Run
+
+Will auto-build.
+
+`cargo run`
+
+### Build release
+
+`cargo build --release`
+
+### Test
+
+`cargo test`

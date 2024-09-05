@@ -3,10 +3,11 @@
 
 # Allow files
 !.gitignore
-!meson.build
+!Cargo.toml
+!Cargo.lock
 !README.md
 
 # Allow directories
 !src/
-!cmd/
-
+!tests/
+!.vscode/
