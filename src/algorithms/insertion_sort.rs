@@ -1,22 +1,29 @@
-// Insertion Sort algorithm
-// Works by iterating through the array and inserting each element into
-// its correct sorted position
-pub fn insertion_sort(input: &mut [i32]) {
+/// Insertion-Sort(A, n)
+/// 1. for i = 2 to n
+/// 2.     key = A[i]
+/// 3.     // Insert  A[i]  into the sorted subarray  A[1 : i - 1].
+/// 4.     j = i - 1
+/// 5.     while j > 0 and A[j] > key
+/// 6.         A[j + 1] = A[j]
+/// 7.         j = j - 1
+/// 8.     A[j + 1] = key
+pub fn insertion_sort(a: &mut [i32]) {
+    // using `a` instead of `A`, because Rust...
     // Iterate through each element in the array
-    for i in 1..input.len() {
+    for i in 1..a.len() {
         // Store the current element to be inserted
-        let key = input[i];
+        let key = a[i];
         // Store the index of the element to the left of the current element
         let mut j = i;
         // Move elements to the right until a smaller element is found
-        while j > 0 && input[j-1] > key {
+        while j > 0 && a[j - 1] > key {
             // Move the element to the right
-            input[j] = input[j-1];
-            // Move the index further left
+            a[j] = a[j - 1];
+            // Move the index to the left
             j -= 1;
         }
         // Insert the element at the correct position
-        input[j] = key
+        a[j] = key;
     }
 }
 
