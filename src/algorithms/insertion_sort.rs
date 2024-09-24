@@ -27,6 +27,12 @@ pub fn insertion_sort(a: &mut [i32]) {
     }
 }
 
+// Loop Invariance:
+//
+// Initialization: The subarray with a single element is trivially sorted.
+// Maintenance: At each step, the next element is correctly inserted into its sorted position, maintaining the invariant that the subarray is sorted.
+// Termination: When the loop finishes, the invariant ensures that the entire array is sorted.
+
 // The run function generates data, runs the algorithm, and prints the result
 pub fn run() {
     // Step 1: Data generation
