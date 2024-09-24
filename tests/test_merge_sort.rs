@@ -9,8 +9,7 @@ proptest! {
         let original = input.clone();
 
         // Run the sorting algorithm
-        let len = input.len();
-        merge_sort(&mut input, 0, len - 1);
+        merge_sort(&mut input);
 
         // Check that the output is sorted
         prop_assert!(input.windows(2).all(|w| w[0] <= w[1]));

@@ -33,12 +33,12 @@ MERGE(A, p, q, r)
 fn merge(a: &mut [i32], p: usize, q: usize, r: usize) {
     let n_l = q - p + 1;
     let n_r = r - q;
-    let mut l = vec![0; n_l - 1];
-    let mut r = vec![0; n_r - 1];
-    for i in 0..n_l - 1 {
-        l[i] = a[p + 1];
+    let mut l = vec![0; n_l];
+    let mut r = vec![0; n_r];
+    for i in 0..n_l {
+        l[i] = a[p + i];
     }
-    for j in 0..n_r - 1 {
+    for j in 0..n_r {
         r[j] = a[q + j + 1];
     }
     let mut i = 0;
@@ -48,7 +48,8 @@ fn merge(a: &mut [i32], p: usize, q: usize, r: usize) {
         if l[i] <= r[j] {
             a[k] = l[i];
             i += 1;
-        } else if a[k] == r[j] {
+        } else {
+            a[k] = r[j];
             j += 1;
         }
         k += 1;
@@ -67,13 +68,35 @@ fn merge(a: &mut [i32], p: usize, q: usize, r: usize) {
     }
 }
 
-pub fn merge_sort(a: &mut [i32], p: usize, r: usize) {
+/*
+MERGE-SORT(A, p, r)
+1    if p ≥ r                  // zero or one element?
+2        return
+3    q = ⌊(p + r)/2⌋           // midpoint of A[p : r]
+4    MERGE-SORT(A, p, q)       // recursively sort A[p : q]
+5    MERGE-SORT(A, q + 1, r)   // recursively sort A[q + 1 : r]
+6    // Merge A[p : q] and A[q + 1 : r] into A[p : r].
+7    MERGE(A, p, q, r)
+*/
+fn _merge_sort(a: &mut [i32], p: usize, r: usize) {
+    //! Can NOT handle empty lists, as r would become -1 and fail.
+    //! This is also the actual
     if p >= r {
         return;
     }
-    // integer division rounds down - this does NOT return a float.
+    // Integer division rounds down, this does NOT return a float.
     let q = (p + r) / 2;
-    merge_sort(a, p, q);
-    merge_sort(a, q + 1, r);
+    _merge_sort(a, p, q);
+    _merge_sort(a, q + 1, r);
     merge(a, p, q, r);
+}
+
+pub fn merge_sort(a: &mut [i32]) {
+    /*! We're using an extra function to wrap the actual function, so we don't
+    have to change out interface compared with insertion sort. */
+    if a.len() <= 1 {
+        return;
+    }
+    let len = a.len();
+    _merge_sort(a, 0, len - 1);
 }
